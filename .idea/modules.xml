@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/demo-master.iml" filepath="$PROJECT_DIR$/.idea/demo-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-orchestration/demo-orchestration.iml" filepath="$PROJECT_DIR$/demo-orchestration/demo-orchestration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-sharding/demo-sharding.iml" filepath="$PROJECT_DIR$/demo-sharding/demo-sharding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-encrypt/demo-sharding-encrypt.iml" filepath="$PROJECT_DIR$/demo-encrypt/demo-sharding-encrypt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-transaction/demo-transaction.iml" filepath="$PROJECT_DIR$/demo-transaction/demo-transaction.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,47 @@
+dataSources:
+  ds3: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ds3?useSSL=false
+    username: root
+    password: lmmgo
+  ds4: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ds4?useSSL=false
+    username: root
+    password: lmmgo
+  ds5: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ds5?useSSL=false
+    username: root
+    password: lmmgo
+    
+
+shardingRule:
+  tables:
+    health_record:
+      # 分库分表ds3、ds4、ds5，health_record0、health_record1、health_record2
+      actualDataNodes: ds$->{3..5}.health_record$->{0..2}
+      databaseStrategy:
+        hint:
+          algorithmClassName: com.tianyilan.shardingsphere.demo.hint.MatchHintShardingAlgorithm
+      tableStrategy:
+        hint:
+          algorithmClassName: com.tianyilan.shardingsphere.demo.hint.MatchHintShardingAlgorithm      
+    health_task:
+      # 分库分表
+      actualDataNodes: ds$->{3..5}.health_task$->{0..2}
+  bindingTables:
+    - health_record,health_task
+  broadcastTables:
+    - health_level
+
+  defaultDatabaseStrategy:
+    inline:
+      # 根据用户id分库
+      shardingColumn: user_id
+      algorithmExpression: ds$->{user_id % 3 + 3} 
+  defaultTableStrategy:
+    none:
+
+props:
+  sql.show: true

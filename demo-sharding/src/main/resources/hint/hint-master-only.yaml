@@ -1,0 +1,25 @@
+dataSources:
+  dsmaster: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dsmaster?useSSL=false
+    username: root
+    password: lmmgo
+  dsslave0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dsslave0?useSSL=false
+    username: root
+    password: lmmgo
+  dsslave1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dsslave1?useSSL=false
+    username: root
+    password: lmmgo
+
+# 指定具体的主从架构
+masterSlaveRule:
+  name: health_ms
+  masterDataSourceName: dsmaster
+  slaveDataSourceNames: [dsslave0, dsslave1]
+
+props:
+  sql.show: true
